@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 # Create your models here.
 class Recipe(models.Model):
     name = models.CharField(max_length=125)
@@ -14,8 +15,8 @@ class Recipe(models.Model):
         return self.name + " by " + self.author
 
 
-class Measure(models.Model):  # class = model in django
-    name = models.CharField(max_length=30, unique=True)  # name = databasefield
+class Measure(models.Model):
+    name = models.CharField(max_length=30, unique=True)
     abbreviation = models.CharField(max_length=10, unique=True)
 
     def __str__(self):
@@ -40,7 +41,10 @@ class Ingredient(models.Model):
     food = models.ForeignKey("FoodItem", on_delete=models.PROTECT)
 
     def __str__(self):
-        return str(self.amount) + " " + str(self.measure) + " "
+        amount = str(self.amount)
+        measure = self.measure.name
+        food = self.food.name
+        return amount + " " + measure + " " + food
 
 
 class Step(models.Model):
