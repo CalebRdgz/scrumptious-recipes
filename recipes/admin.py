@@ -1,8 +1,9 @@
 from django.contrib import admin
+
 from recipes.models import Recipe, Measure, FoodItem, Ingredient, Step
 
+
 # Register your models here.
-# ModelAdmin is already in django (it comes with django)
 class RecipeAdmin(admin.ModelAdmin):
     pass
 
@@ -19,7 +20,7 @@ class IngredientAdmin(admin.ModelAdmin):
     pass
 
 
-class Step(admin.ModelAdmin):
+class StepAdmin(admin.ModelAdmin):
     pass
 
 
