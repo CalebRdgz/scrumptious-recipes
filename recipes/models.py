@@ -14,8 +14,8 @@ class Recipe(models.Model):
         return self.name + " by " + self.author
 
 
-class Measure(models.Model):
-    name = models.CharField(max_length=30, unique=True)
+class Measure(models.Model):  # class = model in django
+    name = models.CharField(max_length=30, unique=True)  # name = database field
     abbreviation = models.CharField(max_length=10, unique=True)
 
     def __str__(self):
