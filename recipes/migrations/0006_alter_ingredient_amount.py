@@ -7,13 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recipes', '0005_alter_step_food_items'),
+        ("recipes", "0005_alter_step_food_items"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='ingredient',
-            name='amount',
-            field=models.FloatField(validators=[django.core.validators.MaxValueValidator(20)]),
+            model_name="ingredient",
+            name="amount",
+            field=models.FloatField(
+                validators=[django.core.validators.MaxValueValidator(20)]
+            ),
         ),
     ]

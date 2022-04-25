@@ -15,7 +15,7 @@ class Recipe(models.Model):
 
 
 class Measure(models.Model):  # class = model in django
-    name = models.CharField(max_length=30, unique=True)  # name = databasefield
+    name = models.CharField(max_length=30, unique=True)  # name = database field
     abbreviation = models.CharField(max_length=10, unique=True)
 
     def __str__(self):
