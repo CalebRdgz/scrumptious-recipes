@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -25,9 +25,9 @@ def log_rating(request, recipe_id):
 
 
 class RecipeListView(ListView):
-    paginate_by = 2
     model = Recipe
     template_name = "recipes/list.html"
+    paginate_by = 2
 
 
 class RecipeDetailView(DetailView):
