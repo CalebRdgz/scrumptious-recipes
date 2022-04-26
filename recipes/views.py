@@ -25,6 +25,7 @@ def log_rating(request, recipe_id):
 
 
 class RecipeListView(ListView):
+    paginate_by = 2
     model = Recipe
     template_name = "recipes/list.html"
 
