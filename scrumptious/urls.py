@@ -21,6 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("recipes/", include("recipes.urls")),
     path("tags/", include("tags.urls")),
+    path("app_name/", include("app_name.urls")),
     path(
         "",
         RedirectView.as_view(url=reverse_lazy("recipes_list")),
