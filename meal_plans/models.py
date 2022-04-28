@@ -9,10 +9,10 @@ USER_MODEL = settings.AUTH_USER_MODEL
 
 class MealPlan(models.Model):
     name = models.CharField(max_length=120)
-    date = models.DateTimeField()
+    date = models.DateTimeField(max_length=120)
     owner = models.ForeignKey(
         USER_MODEL,
-        related_name="app_name",
+        related_name="meal_plans",
         on_delete=models.CASCADE,
         null=True,
     )

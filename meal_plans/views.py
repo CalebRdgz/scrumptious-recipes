@@ -1,7 +1,8 @@
+from typing import List
 from django.shortcuts import render
 
 from django.views.generic.list import ListView
-from app_name.models import MealPlan
+from meal_plans.models import MealPlan
 
 # Create your views here.
 
