@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from tags.models import Tag
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class TagListView(ListView):
@@ -36,3 +36,10 @@ class TagDeleteView(DeleteView):
     model = Tag
     template_name = "tags/delete.html"
     success_url = reverse_lazy("tags_list")
+
+
+class RecipeCreateView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    template_name = "recipes/new.html"
+    fields = ["name", "author", "description", "image"]
+    success_url = reverse_lazy("recipes_list")

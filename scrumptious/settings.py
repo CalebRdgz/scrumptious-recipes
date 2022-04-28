@@ -152,3 +152,6 @@ MARKDOWNIFY = {
         ]
     }
 }
+
+LOGIN_REDIRECT_URL = "recipes_list"
+LOGOUT_REDIRECT_URL = "recipes_list"
