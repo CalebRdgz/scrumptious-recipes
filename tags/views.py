@@ -3,7 +3,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
+
 from tags.models import Tag
+from recipes.models import Recipe
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
