@@ -11,7 +11,7 @@ from meal_plans.views import (
 urlpatterns = [
     path("", MealPlanListView.as_view(), name="meal_plans_list"),
     path(
-        "/create/",
+        "create/",
         MealPlanCreateView.as_view(),
         name="meal_plans_create",
     ),

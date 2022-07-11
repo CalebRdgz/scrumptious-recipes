@@ -4,6 +4,7 @@ from django.conf import settings
 
 USER_MODEL = settings.AUTH_USER_MODEL
 
+
 # Create your models here.
 class Recipe(models.Model):
     name = models.CharField(max_length=125)
@@ -47,11 +48,15 @@ class Ingredient(models.Model):
     measure = models.ForeignKey("Measure", on_delete=models.PROTECT)
     food = models.ForeignKey("FoodItem", on_delete=models.PROTECT)
 
-    def __str__(self):
-        amount = str(self.amount)
-        measure = self.measure.name
-        food = self.food.name
-        return amount + " " + measure + " " + food
+    def resize_to(ingredient, target):
+        servings = ingredient.recipe.servings
+        if servings is not None and target is not None:
+            try:
+                ratio = int(target) / servings
+                return ingredient.amount * ratio
+            except ValueError:
+                pass
+        return ingredient.amount
 
 
 class Step(models.Model):
@@ -80,3 +85,33 @@ class Rating(models.Model):
         related_name="ratings",
         on_delete=models.CASCADE,
     )
+
+
+class ShoppingItem(models.Model):
+    user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
+    food_item = models.ForeignKey("FoodItem", on_delete=models.PROTECT)
+
+    # def create_shopping_item(request):
+
+
+#     # Get the ingredient_id from the POST
+#     ingredient_id = request.POST.get("ingredient_id")
+
+#     # Get the specific ingredient from the Ingredient model
+#     ingredient = Ingredient.objects.get(id=ingredient_id)
+
+#     # Get the current user
+#     user = request.user
+#     try:
+#         # Create the new shopping item in the database
+#         ShoppingItem.objects.create(
+#             food_item=ingredient.food,
+#             user=user,
+#         )
+#     # Catch the error if its already in there
+#     except IntegrityError:
+#         # Don't do anything with the error
+#         pass
+
+#     # Go back to the recipe page
+#     return redirect("recipe_detail", pk=ingredient.recipe.id)
